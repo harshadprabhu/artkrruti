@@ -5,17 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ArtKrruti — Handmade pooja & festival decor</title>
 <meta name="description" content="Handmade thaal covers, torans, Gudi Padwa flags, pooja cones, lotus asans and reusable rangoli mats. Made to order in Mumbai.">
+<link rel="icon" type="image/png" id="fav" href="">
+<link rel="apple-touch-icon" id="fav2" href="">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Karla:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#1F2A5A; --teal:#14655F; --rust:#C2551E; --saffron:#E0942B; --plum:#6B3FA0;
-  --paper:#F2EEE6; --paper-2:#FBF8F2; --char:#2C2C2C;
-  --line:rgba(31,42,90,.13);
+  --paper:#FCE9EF; --paper-2:#FFF7FA; --char:#2C2C2C;
+  --rose:#D14D7A; --rose-dp:#A8325C;
+  --line:rgba(168,50,92,.16);
   --display:"Tiro Devanagari Hindi", Georgia, serif;
   --body:"Karla", system-ui, sans-serif;
-  --hdr:62px;
+  --hdr:84px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -27,25 +30,39 @@ a{color:inherit}
 .wrap{width:min(1280px,94vw);margin:0 auto}
 
 /* ================= header ================= */
-header{position:sticky;top:0;z-index:60;background:rgba(242,238,230,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.bar{display:flex;align-items:center;gap:20px;height:var(--hdr)}
+header{position:sticky;top:0;z-index:60;background:rgba(252,233,239,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:20px;height:var(--hdr);transition:height .22s ease}
+header.small .bar{height:60px}
 .mark{flex:0 0 auto;display:block}
-.mark img{height:40px;width:auto}
+.mark img{height:56px;width:auto;transition:height .22s ease;display:block}
+header.small .mark img{height:38px}
 nav{display:flex;gap:22px;margin-left:auto;font-size:13.5px;letter-spacing:.06em;text-transform:uppercase}
 nav a{text-decoration:none;padding:6px 0;border-bottom:2px solid transparent}
 nav a:hover{border-color:var(--rust)}
 .cart-btn{display:flex;align-items:center;gap:8px;background:var(--ink);color:var(--paper-2);padding:9px 16px;border-radius:999px;font-size:14px;font-weight:700;transition:transform .18s,background .18s}
 .cart-btn:hover{transform:translateY(-2px);background:var(--teal)}
 .dot{min-width:20px;height:20px;border-radius:999px;background:var(--saffron);color:var(--ink);display:grid;place-items:center;font-size:12px;font-weight:800;padding:0 5px}
-@media(max-width:880px){nav{display:none}.bar{gap:12px}.mark img{height:32px}}
+@media(max-width:880px){
+  nav{display:none}.bar{gap:12px}
+  :root{--hdr:70px}
+  .mark img{height:44px}
+  header.small .mark img{height:34px}
+}
 
 /* ================= hero ================= */
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
 #trail{position:absolute;inset:0;pointer-events:none;z-index:1}
-.hero-in{position:relative;z-index:2;padding:66px 0 58px;max-width:820px}
+.hero-in{position:relative;z-index:2;padding:56px 0 60px;max-width:900px;margin:0 auto;text-align:center}
+.hero-logo{width:clamp(260px,46vw,520px);height:auto;margin:0 auto 26px;display:block;
+  filter:drop-shadow(0 10px 26px rgba(168,50,92,.18))}
+.hero-in .eyebrow{justify-content:center}
+.hero-in .eyebrow::before{content:"";height:1px;width:64px;background:var(--rust);opacity:.55}
+.hero-in .lede{margin-left:auto;margin-right:auto}
+.hero-cta{justify-content:center}
+@media(max-width:860px){.hero-logo{margin-bottom:20px}}
 .eyebrow{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);font-weight:700;margin:0 0 16px;display:flex;align-items:center;gap:12px}
 .eyebrow::after{content:"";height:1px;width:64px;background:var(--rust);opacity:.55}
-h1{font-family:var(--display);font-weight:400;margin:0 0 16px;font-size:clamp(2.2rem,5.4vw,3.9rem);line-height:1.08;color:var(--ink)}
+h1{font-family:var(--display);font-weight:400;margin:0 0 14px;font-size:clamp(1.7rem,3.6vw,2.7rem);line-height:1.12;color:var(--ink)}
 h1 em{font-style:italic;color:var(--rust)}
 .lede{font-size:clamp(1rem,1.8vw,1.14rem);max-width:56ch;margin:0 0 26px;color:#4A4A4A}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
@@ -92,9 +109,9 @@ h1 em{font-style:italic;color:var(--rust)}
 @media(min-width:700px){.grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px}}
 .card{background:var(--paper-2);border-radius:12px;overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s;cursor:pointer}
 .card:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(31,42,90,.11)}
-.card-art{aspect-ratio:1/1;position:relative;overflow:hidden;background:#FAF8F4}
-.card-art img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.card:hover .card-art img{transform:scale(1.06)}
+.card-art{aspect-ratio:1/1;position:relative;overflow:hidden;background:#FFF7FA}
+.card-art img{width:100%;height:100%;object-fit:cover}
+
 .pill{position:absolute;top:8px;left:8px;background:rgba(251,248,242,.94);font-size:9.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:4px 8px;border-radius:999px}
 .shots{position:absolute;bottom:8px;right:8px;background:rgba(31,42,90,.8);color:#fff;font-size:10px;font-weight:700;padding:3px 7px;border-radius:999px}
 .card-body{padding:11px 12px 13px;display:flex;flex-direction:column;gap:5px;flex:1}
@@ -104,6 +121,8 @@ h1 em{font-style:italic;color:var(--rust)}
 }
 .pr{display:flex;align-items:baseline;gap:5px;margin-top:auto;padding-top:3px}
 .pr b{font-size:15.5px;color:var(--ink);font-weight:800}
+.pr del{font-size:12.5px;color:#A99;font-weight:600}
+.pr .off{font-size:11.5px;font-weight:800;color:#1B7A3F}
 .pr small{font-size:11px;color:#8E8E8E;font-weight:600}
 .pr .req{font-size:13px;font-weight:700;color:var(--teal)}
 .add{
@@ -113,6 +132,81 @@ h1 em{font-style:italic;color:var(--rust)}
 .add:hover{background:var(--teal)}
 .add.in{background:var(--teal)}
 .empty-grid{padding:60px 0;text-align:center;color:#888}
+
+
+/* ---- announcement bar ---- */
+.ann{background:var(--ink);color:#fff;font-size:12.5px;letter-spacing:.05em;text-align:center;padding:8px 14px}
+.ann b{color:var(--saffron)}
+
+/* ---- horizontal scroll rows ---- */
+.row-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.row-head h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--ink);margin:0;line-height:1.1}
+.row-nav{margin-left:auto;display:flex;align-items:center;gap:8px}
+.row-nav span{font-size:12.5px;color:#8A7480;min-width:56px;text-align:right}
+.row-nav button{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);background:#fff;color:var(--ink);font-size:17px;line-height:1;display:grid;place-items:center}
+.row-nav button:hover:not(:disabled){background:var(--ink);color:#fff;border-color:var(--ink)}
+.row-nav button:disabled{opacity:.32;cursor:default}
+.scroller{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px;scroll-behavior:smooth}
+.scroller::-webkit-scrollbar{display:none}
+.scroller > *{scroll-snap-align:start;flex:0 0 auto}
+.scroller .card{width:190px}
+.scroller .tile{width:190px}
+.scroller .ft{width:210px}
+@media(min-width:700px){.scroller .card,.scroller .tile{width:220px}}
+
+/* ---- collection tiles ---- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+.tile{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/5;border:1px solid var(--line);cursor:pointer}
+.tile img{width:100%;height:100%;object-fit:cover}
+.tile span{position:absolute;left:0;right:0;bottom:0;padding:26px 12px 12px;color:#fff;font-weight:700;font-size:14px;
+  background:linear-gradient(to top,rgba(20,10,25,.82),rgba(20,10,25,0))}
+.tile small{display:block;font-weight:600;opacity:.82;font-size:11.5px}
+
+/* ---- festival strip ---- */
+.fest-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.ft{border-radius:13px;padding:16px 14px;color:#fff;text-align:left;min-height:92px;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;transition:transform .16s}
+.ft:hover{transform:translateY(-3px)}
+.ft b{font-family:var(--display);font-weight:400;font-size:17px;display:block;line-height:1.2}
+.ft small{font-size:11.5px;opacity:.85}
+
+/* ---- active filter banner ---- */
+.fbanner{display:none;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-bottom:16px;font-size:14px}
+.fbanner.on{display:flex}
+.fbanner button{margin-left:auto;color:var(--rose-dp);font-weight:700;text-decoration:underline;font-size:13px}
+
+/* ---- trust strip ---- */
+.trust{background:#fff;border-block:1px solid var(--line);padding:22px 0}
+.trust-in{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;text-align:center}
+.trust-in div{font-size:13.5px;color:#5A5A5A}
+.trust-in b{display:block;font-family:var(--display);font-weight:400;font-size:17px;color:var(--ink);margin-bottom:2px}
+.trust-in i{font-style:normal;font-size:20px;display:block;margin-bottom:5px}
+
+/* ---- gallery ---- */
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.gal img{aspect-ratio:1/1;object-fit:cover;border-radius:10px;border:1px solid var(--line);width:100%}
+
+/* ---- faq ---- */
+.faq{max-width:760px}
+.faq details{border-bottom:1px solid var(--line);padding:14px 0}
+.faq summary{cursor:pointer;font-weight:700;font-size:15px;color:var(--ink);list-style:none;display:flex;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"+";color:var(--rose);font-weight:700;width:14px;flex:0 0 auto}
+.faq details[open] summary::before{content:"−"}
+.faq p{margin:9px 0 0 26px;font-size:14.5px;color:#5A5A5A}
+
+/* ---- stock badge ---- */
+.stock{position:absolute;top:8px;right:8px;background:var(--ink);color:#fff;font-size:9.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:4px 8px;border-radius:999px}
+.stock.out{background:#8A8A8A}
+
+/* ---- footer extras ---- */
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.14);margin-bottom:20px}
+.foot-grid h4{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin:0 0 12px;font-weight:700}
+.foot-grid a{display:block;color:rgba(255,255,255,.78);text-decoration:none;font-size:13.5px;padding:3px 0}
+.foot-grid a:hover{color:#fff}
+.socials{display:flex;gap:10px;margin-top:14px}
+.socials a{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.12);display:grid;place-items:center;font-size:14px}
+.socials a:hover{background:var(--rose)}
+@media(max-width:760px){.foot-grid{grid-template-columns:1fr;gap:24px}}
 
 /* ================= about ================= */
 .about{background:var(--paper-2);border-block:1px solid var(--line);padding:70px 0}
@@ -142,7 +236,7 @@ h1 em{font-style:italic;color:var(--rust)}
 
 footer{background:var(--char);color:rgba(255,255,255,.68);padding:34px 0;font-size:13.5px}
 .foot{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center}
-.foot img{height:36px;opacity:.92}
+.foot img{height:34px;filter:brightness(0) invert(1);opacity:.9}
 
 /* ================= overlays ================= */
 .scrim{position:fixed;inset:0;background:rgba(31,42,90,.46);opacity:0;visibility:hidden;transition:.25s;z-index:90}
@@ -159,7 +253,7 @@ footer{background:var(--char);color:rgba(255,255,255,.68);padding:34px 0;font-si
 .empty{text-align:center;padding:46px 12px;color:#777}
 .empty svg{width:60px;height:60px;margin:0 auto 14px;opacity:.5}
 .line{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
-.line-art{width:58px;height:58px;border-radius:8px;overflow:hidden;flex:0 0 auto;background:#EDE7DC}
+.line-art{width:58px;height:58px;border-radius:8px;overflow:hidden;flex:0 0 auto;background:#FFF7FA}
 .line-art img{width:100%;height:100%;object-fit:cover}
 .line-mid{flex:1;min-width:0}
 .line-mid h4{font-size:13.5px;font-weight:700;margin:0 0 2px;color:var(--char)}
@@ -179,6 +273,14 @@ footer{background:var(--char);color:rgba(255,255,255,.68);padding:34px 0;font-si
 .field input:focus,.field textarea:focus{border-color:var(--ink);outline:none}
 .field textarea{resize:vertical;min-height:54px}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sec-t{font-family:var(--display);font-weight:400;font-size:18px;color:var(--ink);margin:18px 0 10px}
+#dForm{padding-top:4px;border-top:1px solid var(--line);margin-top:8px}
+.field select{width:100%;padding:11px 12px;border:1.5px solid var(--line);border-radius:8px;font-family:inherit;font-size:15px;background:var(--paper-2);color:var(--char);appearance:none;
+  background-image:linear-gradient(45deg,transparent 50%,#8A7480 50%),linear-gradient(135deg,#8A7480 50%,transparent 50%);
+  background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.field select:focus{border-color:var(--ink);outline:none}
+.chk{display:flex;gap:9px;align-items:flex-start;font-size:13px;color:#5A5A5A;margin:-2px 0 4px;cursor:pointer}
+.chk input{margin-top:3px;accent-color:var(--rose)}
 .err{color:var(--rust);font-size:12.5px;margin:-3px 0 8px;display:none}
 .err.on{display:block}
 .wa{width:100%;padding:14px;border-radius:10px;background:#128C4A;color:#fff;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:9px;transition:background .16s}
@@ -194,7 +296,7 @@ footer{background:var(--char);color:rgba(255,255,255,.68);padding:34px 0;font-si
   display:grid;grid-template-columns:1fr 1fr;
 }
 .sheet.on{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1)}
-.sh-art{position:relative;background:#FAF8F4;min-height:300px}
+.sh-art{position:relative;background:#FFF7FA;min-height:300px}
 .sh-art img{width:100%;height:100%;object-fit:cover;max-height:88vh}
 .sh-nav{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;background:rgba(251,248,242,.92);color:var(--ink);font-size:24px;line-height:1;display:grid;place-items:center;box-shadow:0 2px 10px rgba(0,0,0,.15)}
 .sh-prev{left:10px} .sh-next{right:10px}
@@ -237,12 +339,16 @@ footer{background:var(--char);color:rgba(255,255,255,.68);padding:34px 0;font-si
 </head>
 <body>
 
+<div class="ann">Handmade to order in Mumbai · <b>Ships across India</b> · Bulk & mandal orders welcome</div>
 <header>
   <div class="wrap bar">
     <a class="mark" href="#top" aria-label="ArtKrruti home"><img id="logoTop" src="" alt="ArtKrruti"></a>
     <nav>
-      <a href="#shop">Shop</a>
+      <a href="#collections">Shop</a>
+      <a href="#festivals">Festivals</a>
       <a href="#about">Our work</a>
+      <a href="#care">Care</a>
+      <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
     </nav>
     <button class="cart-btn" id="openCart">My list <span class="dot" id="count">0</span></button>
@@ -253,6 +359,7 @@ footer{background:var(--char);color:rgba(255,255,255,.68);padding:34px 0;font-si
   <div class="hero">
     <canvas id="trail" aria-hidden="true"></canvas>
     <div class="wrap hero-in">
+      <img class="hero-logo" id="logoHero" src="" alt="ArtKrruti">
       <p class="eyebrow">Handmade in Mumbai</p>
       <h1>Decor for the days that <em>matter</em>.</h1>
       <p class="lede">Thaal covers, torans, Gudi Padwa sets, shagun cones, lotus asans and reusable rangoli mats — stitched by hand in paithani and khan fabric.</p>
@@ -271,6 +378,36 @@ footer{background:var(--char);color:rgba(255,255,255,.68);padding:34px 0;font-si
     </div>
   </div>
 
+  <section id="collections" style="padding:52px 0 6px">
+    <div class="wrap">
+      <div class="row-head"><h2>Shop by collection</h2>
+        <div class="row-nav"><span id="nTiles"></span>
+          <button data-scroll="tiles" data-dir="-1" aria-label="Scroll left">‹</button>
+          <button data-scroll="tiles" data-dir="1" aria-label="Scroll right">›</button></div></div>
+      <div class="scroller" id="tiles"></div>
+    </div>
+  </section>
+
+  <section id="festivals" style="padding:40px 0 6px">
+    <div class="wrap">
+      <div class="row-head"><h2>Shop by festival</h2>
+        <div class="row-nav"><span id="nFest"></span>
+          <button data-scroll="festTiles" data-dir="-1" aria-label="Scroll left">‹</button>
+          <button data-scroll="festTiles" data-dir="1" aria-label="Scroll right">›</button></div></div>
+      <div class="scroller" id="festTiles"></div>
+    </div>
+  </section>
+
+  <section id="popular" style="padding:40px 0 6px">
+    <div class="wrap">
+      <div class="row-head"><h2>Festive favourites</h2>
+        <div class="row-nav"><span id="nPop"></span>
+          <button data-scroll="popRow" data-dir="-1" aria-label="Scroll left">‹</button>
+          <button data-scroll="popRow" data-dir="1" aria-label="Scroll right">›</button></div></div>
+      <div class="scroller" id="popRow"></div>
+    </div>
+  </section>
+
   <section id="shop">
     <div class="wrap">
       <div class="shop-head">
@@ -281,8 +418,20 @@ footer{background:var(--char);color:rgba(255,255,255,.68);padding:34px 0;font-si
     <div class="filters">
       <div class="wrap"><div class="rail" id="chips" role="group" aria-label="Filter by category"></div></div>
     </div>
-    <div class="wrap"><div class="grid" id="grid"></div></div>
+    <div class="wrap">
+      <div class="fbanner" id="fbanner"><span id="fbText"></span><button id="fbClear">Clear filter</button></div>
+      <div class="grid" id="grid"></div>
+    </div>
   </section>
+
+  <div class="trust">
+    <div class="wrap trust-in">
+      <div><i>🪡</i><b>Handmade to order</b>Stitched individually, not mass produced</div>
+      <div><i>🧵</i><b>Real paithani & khan</b>Woven fabric, never printed imitation</div>
+      <div><i>🎨</i><b>Any colour you need</b>Matched to your mandir or door</div>
+      <div><i>📦</i><b>Ships across India</b>Delivered in 3–10 days</div>
+    </div>
+  </div>
 
   <section class="about" id="about">
     <div class="wrap about-in">
@@ -301,6 +450,40 @@ footer{background:var(--char);color:rgba(255,255,255,.68);padding:34px 0;font-si
         <div class="fbox" style="background:#14655F"><b>Gudi Padwa</b><span>Gudi sets, flags & sarees</span></div>
         <div class="fbox" style="background:#1F2A5A"><b>Diwali & Lakshmi Pooja</b><span>Torans, chowki sets, rangoli</span></div>
         <div class="fbox" style="background:#E0942B;color:#1F2A5A"><b>Weddings & Haldi</b><span>Shagun cones, potlis</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="care" style="padding:64px 0">
+    <div class="wrap">
+      <div class="shop-head"><h2>Looking after your pieces</h2></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;max-width:1000px">
+        <div><b style="color:var(--ink)">Storing</b><p style="font-size:14.5px;color:#5A5A5A;margin:6px 0 0">Fold along the existing pleats and keep in a cotton bag, not plastic. Zari darkens in trapped moisture.</p></div>
+        <div><b style="color:var(--ink)">Cleaning</b><p style="font-size:14.5px;color:#5A5A5A;margin:6px 0 0">Spot clean with a dry cloth only. Never wash or soak — the gota and lace lose shape and the fabric bleeds.</p></div>
+        <div><b style="color:var(--ink)">Diyas & flames</b><p style="font-size:14.5px;color:#5A5A5A;margin:6px 0 0">Keep an open flame clear of the fabric. These are decorative pieces, not flame-treated.</p></div>
+        <div><b style="color:var(--ink)">Rangoli mats</b><p style="font-size:14.5px;color:#5A5A5A;margin:6px 0 0">Shake out and roll rather than fold. Wipe the floor dry before laying so the backing does not lift.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" style="padding:0 0 64px">
+    <div class="wrap">
+      <div class="shop-head"><h2>In real homes</h2>
+        <span class="count">Our work, photographed where it is actually used</span></div>
+      <div class="gal" id="gal"></div>
+    </div>
+  </section>
+
+  <section id="faq" style="padding:0 0 64px">
+    <div class="wrap">
+      <div class="shop-head"><h2>Questions we get often</h2></div>
+      <div class="faq">
+        <details open><summary>How long does an order take?</summary><p>Most pieces are made in 3 to 10 days depending on the item and how busy the festival season is. Tell us your date when you send your list and we will confirm honestly whether it is possible.</p></details>
+        <details><summary>Can I get a different colour or size?</summary><p>Yes — that is most of what we do. Send a photo of your mandir, thaali or door along with the measurement, and we will suggest fabric and share a price before you commit.</p></details>
+        <details><summary>Do you take bulk orders?</summary><p>Yes, for mandals, housing societies and wedding return gifts. Orders of 25 pieces and above are discounted. Lead time is longer, so plan ahead of the festival.</p></details>
+        <details><summary>How do I pay?</summary><p>We confirm the final price on WhatsApp first, then share payment details there. Nothing is charged on this website — the list you build here is an enquiry, not an order.</p></details>
+        <details><summary>Do you ship outside Mumbai?</summary><p>Yes, across India. Courier charges depend on weight and destination and are confirmed before dispatch.</p></details>
+        <details><summary>Is the fabric real paithani?</summary><p>The paithani and khan we use is woven fabric, not printed imitation. That is why colours vary slightly between batches — we will tell you if the exact shade you saw is unavailable.</p></details>
       </div>
     </div>
   </section>
@@ -327,9 +510,37 @@ footer{background:var(--char);color:rgba(255,255,255,.68);padding:34px 0;font-si
 </main>
 
 <footer>
-  <div class="wrap foot">
-    <img id="logoFoot" src="" alt="ArtKrruti">
-    <span>© <span id="yr"></span> ArtKrruti · Mumbai · Handmade pooja & festival decor</span>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img id="logoFoot" src="" alt="ArtKrruti" style="height:66px;margin-bottom:14px">
+        <p style="font-size:13.5px;color:rgba(255,255,255,.7);margin:0;max-width:34ch">Handmade pooja and festival decor, stitched to order in Mumbai and shipped across India.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram" title="Add your Instagram link">◎</a>
+          <a href="#" aria-label="Facebook" title="Add your Facebook link">f</a>
+          <a href="#" aria-label="YouTube" title="Add your YouTube link">▶</a>
+          <a id="waFoot" href="#" aria-label="WhatsApp">✆</a>
+        </div>
+      </div>
+      <div>
+        <h4>Shop</h4>
+        <a href="#collections">All collections</a>
+        <a href="#festivals">By festival</a>
+        <a href="#shop">Full catalogue</a>
+        <a href="#contact">Custom orders</a>
+      </div>
+      <div>
+        <h4>Help</h4>
+        <a href="#faq">FAQ</a>
+        <a href="#care">Care guide</a>
+        <a href="#about">About us</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="foot">
+      <span>© <span id="yr"></span> ArtKrruti · Mumbai</span>
+      <span style="font-size:12.5px;opacity:.65">Prices confirmed on WhatsApp · No payment taken on this site</span>
+    </div>
   </div>
 </footer>
 
@@ -340,19 +551,43 @@ footer{background:var(--char);color:rgba(255,255,255,.68);padding:34px 0;font-si
     <h2>Your list</h2>
     <button class="close" id="closeCart" aria-label="Close">×</button>
   </div>
-  <div class="d-body" id="dBody"></div>
+  <div class="d-body">
+    <div id="dBody"></div>
+    <div id="dForm" hidden>
+      <div class="sec-t">Contact</div>
+      <div class="field"><input id="cEmail" type="email" autocomplete="email" placeholder="Email"></div>
+      <label class="chk"><input type="checkbox" id="cNews"> <span>Send me updates on new pieces and festival offers</span></label>
+
+      <div class="sec-t">Delivery</div>
+      <div class="field">
+        <select id="cCountry"><option>India</option></select>
+      </div>
+      <div class="row2">
+        <div class="field"><input id="cFirst" autocomplete="given-name" placeholder="First name"></div>
+        <div class="field"><input id="cLast" autocomplete="family-name" placeholder="Last name"></div>
+      </div>
+      <div class="field"><input id="cAddr" autocomplete="address-line1" placeholder="Address"></div>
+      <div class="field"><input id="cApt" autocomplete="address-line2" placeholder="Apartment, suite, etc. (optional)"></div>
+      <div class="row2">
+        <div class="field"><input id="cCity" autocomplete="address-level2" placeholder="City"></div>
+        <div class="field"><select id="cState"><option>Andaman and Nicobar Islands</option><option>Andhra Pradesh</option><option>Arunachal Pradesh</option><option>Assam</option><option>Bihar</option><option>Chandigarh</option><option>Chhattisgarh</option><option>Dadra and Nagar Haveli and Daman and Diu</option><option>Delhi</option><option>Goa</option><option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option><option>Jammu and Kashmir</option><option>Jharkhand</option><option>Karnataka</option><option>Kerala</option><option>Ladakh</option><option>Lakshadweep</option><option>Madhya Pradesh</option><option selected>Maharashtra</option><option>Manipur</option><option>Meghalaya</option><option>Mizoram</option><option>Nagaland</option><option>Odisha</option><option>Puducherry</option><option>Punjab</option><option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option><option>Telangana</option><option>Tripura</option><option>Uttar Pradesh</option><option>Uttarakhand</option><option>West Bengal</option></select></div>
+      </div>
+      <div class="row2">
+        <div class="field"><input id="cPin" inputmode="numeric" autocomplete="postal-code" placeholder="PIN code"></div>
+        <div class="field"><input id="cPhone" inputmode="numeric" autocomplete="tel" placeholder="Phone"></div>
+      </div>
+      <label class="chk"><input type="checkbox" id="cSave" checked> <span>Save this information for next time</span></label>
+
+      <div class="sec-t">Anything to add</div>
+      <div class="field"><textarea id="cNote" placeholder="Colour, size, festival date…"></textarea></div>
+      <p class="err" id="err"></p>
+    </div>
+  </div>
   <div class="d-foot" id="dFoot" hidden>
     <div class="tot"><span>Estimated total</span><b id="total">₹0</b></div>
     <p class="tot-note" id="totNote"></p>
-    <div class="field"><label for="cName">Your name</label><input id="cName" autocomplete="name" placeholder="e.g. Priya Sharma"></div>
-    <div class="row2">
-      <div class="field"><label for="cPhone">Phone</label><input id="cPhone" inputmode="numeric" autocomplete="tel" placeholder="10 digits"></div>
-      <div class="field"><label for="cCity">Area / city</label><input id="cCity" placeholder="e.g. Thane"></div>
-    </div>
-    <div class="field"><label for="cNote">Anything to add</label><textarea id="cNote" placeholder="Colour, size, festival date…"></textarea></div>
-    <p class="err" id="err"></p>
     <button class="wa" id="send">Send list on WhatsApp</button>
-    <p class="fine">Opens WhatsApp with your list ready — you just press send.</p>
+    <p class="fine">Opens WhatsApp with your details ready — you just press send.</p>
   </div>
 </aside>
 
@@ -388,6 +623,7 @@ footer{background:var(--char);color:rgba(255,255,255,.68);padding:34px 0;font-si
 <script>
 const IMG = new Proxy({}, { get: (_, k) => `./assets/products/${String(k)}.jpg` });
 const LOGO = "./assets/logo.png";
+const FAVICON = "./assets/favicon.png";
 
 const CONFIG = { whatsapp:"919821108371", brand:"ArtKrruti", site:"artkrruti.com" };
 
@@ -502,6 +738,114 @@ function toast(msg, actLabel, actFn){
   toastT = setTimeout(() => t.classList.remove("on"), actLabel ? 7000 : 2600);
 }
 
+/* ---------- festival + collection navigation ---------- */
+const FESTIVALS = [
+  { n:"Ganesh Chaturthi", match:["Ganpati"],                col:"#C2551E", s:"Thaal covers, asans, torans" },
+  { n:"Gudi Padwa",       match:["Gudi Padwa"],             col:"#14655F", s:"Gudi sets, flags, sarees" },
+  { n:"Diwali",           match:["Diwali","Lakshmi Pooja"], col:"#1F2A5A", s:"Torans, chowki sets, rangoli" },
+  { n:"Navratri",         match:["Navratri"],               col:"#6B3FA0", s:"Covers and drapes" },
+  { n:"Weddings & Haldi", match:["Wedding","Haldi"],        col:"#D14D7A", s:"Shagun cones, potlis" },
+  { n:"Return gifts",     match:["Return gift"],            col:"#E0942B", s:"Cones, potlis, small pieces" },
+  { n:"Gruhapravesh",     match:["Gruhapravesh"],           col:"#8A2F5E", s:"Torans and door decor" },
+  { n:"Everyday pooja",   match:["Pooja","Satyanarayan"],   col:"#4A7C59", s:"Asans, leaves, thaal covers" }
+];
+let activeFest = null;
+const inFest = (p, f) => p.f.some(tag => f.match.some(m => tag.toLowerCase().includes(m.toLowerCase())));
+
+const BEST = ["AK-TH1","AK-TR2","AK-GD1","AK-RG2","AK-CN1","AK-AS1","AK-TH8","AK-TR1","AK-GD3","AK-RG1"];
+
+function cardHTML(p){
+  const cat = catOf(p.c), qty = cart[p.id] || 0, n = shots(p).length;
+  const off = p.mrp && p.price ? Math.round((1 - p.price / p.mrp) * 100) : 0;
+  return `<article class="card" data-open="${p.id}">
+    <div class="card-art">
+      <img src="${IMG[p.img]}" alt="${esc(p.n)}" loading="lazy">
+      <span class="pill" style="color:${cat.col}">${esc(cat.n)}</span>
+      ${n > 1 ? `<span class="shots">${n} photos</span>` : ""}
+      ${p.stock === "out" ? `<span class="stock out">Sold out</span>` : ""}
+    </div>
+    <div class="card-body">
+      <h3>${esc(p.n)}</h3>
+      <div class="pr">${p.price
+        ? `<b>${inr(p.price)}</b>${p.mrp ? `<del>${inr(p.mrp)}</del><span class="off">${off}% off</span>` : `<small>onwards</small>`}`
+        : `<span class="req">Price on request</span>`}</div>
+      <button class="add ${qty ? "in" : ""}" data-add="${p.id}"${p.stock === "out" ? ' disabled style="background:#B9B9B9"' : ""}>${
+        p.stock === "out" ? "Sold out" : qty ? `Added · ${qty}` : "Add to list"}</button>
+    </div>
+  </article>`;
+}
+
+// scroller arrows + counters
+function wireScroller(id, label){
+  const el = document.getElementById(id);
+  const btns = [...document.querySelectorAll(`[data-scroll="${id}"]`)];
+  const upd = () => {
+    const step = el.firstElementChild ? el.firstElementChild.offsetWidth + 14 : 200;
+    const page = Math.max(1, Math.round(el.clientWidth / step));
+    const cur  = Math.floor(el.scrollLeft / step / page) + 1;
+    const tot  = Math.max(1, Math.ceil(el.children.length / page));
+    if(label) document.getElementById(label).textContent = `${Math.min(cur,tot)} / ${tot}`;
+    btns[0].disabled = el.scrollLeft < 6;
+    btns[1].disabled = el.scrollLeft + el.clientWidth >= el.scrollWidth - 6;
+  };
+  btns.forEach(b => b.onclick = () => {
+    const step = el.firstElementChild ? el.firstElementChild.offsetWidth + 14 : 200;
+    el.scrollBy({ left: +b.dataset.dir * step * Math.max(1, Math.floor(el.clientWidth / step)), behavior:"smooth" });
+  });
+  el.addEventListener("scroll", upd, { passive:true });
+  window.addEventListener("resize", upd);
+  setTimeout(upd, 60);
+  return upd;
+}
+
+// collection tiles
+const tiles = document.getElementById("tiles");
+tiles.innerHTML = CATS.filter(c => c.k !== "all").map(c => {
+  const first = PRODUCTS.find(p => p.c === c.k);
+  const n = PRODUCTS.filter(p => p.c === c.k).length;
+  return `<button class="tile" data-cat="${c.k}">
+    <img src="${IMG[first.img]}" alt="${esc(c.n)}" loading="lazy">
+    <span>${esc(c.n)}<small>${n} designs</small></span></button>`;
+}).join("");
+tiles.addEventListener("click", e => {
+  const t = e.target.closest("[data-cat]"); if(!t) return;
+  activeFest = null; active = t.dataset.cat; paintChips(); renderGrid();
+  document.getElementById("shop").scrollIntoView({behavior:"smooth"});
+});
+
+// festival tiles
+const ftw = document.getElementById("festTiles");
+ftw.innerHTML = FESTIVALS.map((f,i) => {
+  const n = PRODUCTS.filter(p => inFest(p,f)).length;
+  return n ? `<button class="ft" data-fest="${i}" style="background:${f.col}">
+    <b>${esc(f.n)}</b><small>${n} pieces · ${esc(f.s)}</small></button>` : "";
+}).join("");
+ftw.addEventListener("click", e => {
+  const t = e.target.closest("[data-fest]"); if(!t) return;
+  activeFest = FESTIVALS[+t.dataset.fest]; active = "all"; paintChips(); renderGrid();
+  document.getElementById("shop").scrollIntoView({behavior:"smooth"});
+});
+document.getElementById("fbClear").onclick = () => { activeFest = null; renderGrid(); };
+
+// festive favourites row
+const popRow = document.getElementById("popRow");
+function renderPop(){
+  popRow.innerHTML = BEST.map(find).filter(Boolean).map(cardHTML).join("");
+}
+renderPop();
+popRow.addEventListener("click", e => {
+  const add = e.target.closest("[data-add]");
+  if(add){ e.stopPropagation(); const id = add.dataset.add;
+    cart[id] = (cart[id]||0) + 1; save(); renderPop(); renderGrid(); renderCart(); bump();
+    toast(`${find(id).n} added`, "View list", openCart); return; }
+  const c = e.target.closest("[data-open]");
+  if(c) openSheet(c.dataset.open);
+});
+
+const updTiles = wireScroller("tiles","nTiles");
+const updFest  = wireScroller("festTiles","nFest");
+const updPop   = wireScroller("popRow","nPop");
+
 /* ---------- category rail ---------- */
 let active = "all";
 const chips = document.getElementById("chips");
@@ -526,27 +870,20 @@ paintChips();
 /* ---------- grid ---------- */
 const grid = document.getElementById("grid");
 function renderGrid(){
-  const list = active === "all" ? PRODUCTS : PRODUCTS.filter(p => p.c === active);
+  let list = active === "all" ? PRODUCTS : PRODUCTS.filter(p => p.c === active);
+  if(activeFest) list = list.filter(p => inFest(p, activeFest));
+
+  const fb = document.getElementById("fbanner");
+  fb.classList.toggle("on", !!activeFest);
+  if(activeFest) document.getElementById("fbText").innerHTML =
+    `Showing pieces for <b style="color:${activeFest.col}">${esc(activeFest.n)}</b>`;
+
   document.getElementById("resCount").textContent =
     `${list.length} ${list.length === 1 ? "product" : "products"}${active === "all" ? "" : " in " + catOf(active).n.toLowerCase()}`;
 
   if(!list.length){ grid.innerHTML = `<p class="empty-grid">Nothing in this category yet.</p>`; return; }
 
-  grid.innerHTML = list.map(p => {
-    const cat = catOf(p.c), qty = cart[p.id] || 0, n = shots(p).length;
-    return `<article class="card" data-open="${p.id}">
-      <div class="card-art">
-        <img src="${IMG[p.img]}" alt="${esc(p.n)}" loading="lazy">
-        <span class="pill" style="color:${cat.col}">${esc(cat.n)}</span>
-        ${n > 1 ? `<span class="shots">${n} photos</span>` : ""}
-      </div>
-      <div class="card-body">
-        <h3>${esc(p.n)}</h3>
-        <div class="pr">${p.price ? `<b>${inr(p.price)}</b><small>onwards</small>` : `<span class="req">Price on request</span>`}</div>
-        <button class="add ${qty ? "in" : ""}" data-add="${p.id}">${qty ? `Added · ${qty}` : "Add to list"}</button>
-      </div>
-    </article>`;
-  }).join("");
+  grid.innerHTML = list.map(cardHTML).join("");
 }
 grid.addEventListener("click", e => {
   const add = e.target.closest("[data-add]");
@@ -554,7 +891,7 @@ grid.addEventListener("click", e => {
     e.stopPropagation();
     const id = add.dataset.add;
     cart[id] = (cart[id] || 0) + 1;
-    save(); renderGrid(); renderCart(); bump();
+    save(); renderGrid(); renderPop(); renderCart(); bump();
     toast(`${find(id).n} added`, "View list", openCart);
     return;
   }
@@ -606,7 +943,7 @@ sheet.addEventListener("click", e => {
 document.getElementById("shClose").onclick = closeSheet;
 document.getElementById("shAdd").onclick = () => {
   cart[shP.id] = (cart[shP.id] || 0) + shQ;
-  save(); renderGrid(); renderCart(); bump();
+  save(); renderGrid(); renderPop(); renderCart(); bump();
   const nm = shP.n;
   closeSheet();
   toast(`${nm} × ${shQ} added`, "View list", openCart);
@@ -640,9 +977,9 @@ function renderCart(){
         <path d="M20 78 C30 40 46 22 62 20 C74 19 80 28 76 38 C72 48 58 50 54 42"/><circle cx="20" cy="78" r="6"/></svg>
       <p><b style="color:#1F2A5A">Nothing on your list yet.</b><br>Add what you need — you can send the whole list over in one message.</p>
     </div>`;
-    foot.hidden = true; return;
+    foot.hidden = true; document.getElementById("dForm").hidden = true; return;
   }
-  foot.hidden = false;
+  foot.hidden = false; document.getElementById("dForm").hidden = false;
 
   body.innerHTML = ids.map(id => {
     const p = find(id);
@@ -678,51 +1015,81 @@ document.getElementById("dBody").addEventListener("click", e => {
     cart[id] += +t.dataset.q;
     if(cart[id] < 1) delete cart[id];
   } else return;
-  save(); renderCart(); renderGrid();
+  save(); renderCart(); renderGrid(); renderPop();
 });
 
 /* ---------- WhatsApp handoff ---------- */
 const ref = () => "AK-" + Date.now().toString(36).slice(-5).toUpperCase();
 
-document.getElementById("send").onclick = () => {
-  const name  = document.getElementById("cName").value.trim();
-  const phone = document.getElementById("cPhone").value.replace(/\D/g,"");
-  const city  = document.getElementById("cCity").value.trim();
-  const note  = document.getElementById("cNote").value.trim();
-  const err   = document.getElementById("err");
+const F = id => document.getElementById(id);
+const SAVE_KEY = "ak_customer";
 
-  if(!name){ err.textContent = "Add your name so we know who to reply to."; err.classList.add("on"); return; }
-  if(phone.length < 10){ err.textContent = "Enter a 10-digit phone number."; err.classList.add("on"); return; }
+// restore saved customer details
+try {
+  const s = JSON.parse(localStorage.getItem(SAVE_KEY) || "{}");
+  Object.entries(s).forEach(([k,v]) => { if(F(k)) F(k).value = v; });
+} catch(e){}
+
+F("send").onclick = () => {
+  const v = id => (F(id).value || "").trim();
+  const email = v("cEmail"), first = v("cFirst"), last = v("cLast"),
+        addr = v("cAddr"), apt = v("cApt"), city = v("cCity"),
+        state = v("cState"), pin = v("cPin").replace(/\D/g,""),
+        phone = v("cPhone").replace(/\D/g,""), note = v("cNote");
+  const err = F("err");
+  const fail = (msg, id) => { err.textContent = msg; err.classList.add("on"); F(id).focus(); };
+
+  if(!first){ return fail("Enter your first name.", "cFirst"); }
+  if(!last){ return fail("Enter your last name.", "cLast"); }
+  if(phone.length < 10){ return fail("Enter a 10-digit phone number.", "cPhone"); }
+  if(email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ return fail("That email doesn't look right.", "cEmail"); }
+  if(!addr){ return fail("Enter your address.", "cAddr"); }
+  if(!city){ return fail("Enter your city.", "cCity"); }
+  if(pin.length !== 6){ return fail("PIN code should be 6 digits.", "cPin"); }
   err.classList.remove("on");
+
+  if(F("cSave").checked){
+    try {
+      localStorage.setItem(SAVE_KEY, JSON.stringify({
+        cEmail:email, cFirst:first, cLast:last, cAddr:addr, cApt:apt,
+        cCity:city, cState:state, cPin:pin, cPhone:phone }));
+    } catch(e){}
+  } else { try { localStorage.removeItem(SAVE_KEY); } catch(e){} }
 
   const ids = Object.keys(cart).filter(id => cart[id] > 0 && find(id));
   let sum = 0;
   const lines = ids.map((id,i) => {
     const p = find(id);
     if(p.price) sum += p.price * cart[id];
-    return `${i+1}. ${p.n} (${p.id}) × ${cart[id]} — ${p.price ? inr(p.price * cart[id]) : "price on request"}`;
+    return `${i+1}. ${p.n} (${p.id}) x ${cart[id]} - ${p.price ? inr(p.price * cart[id]) : "price on request"}`;
   });
 
   const msg =
-`🪔 *New enquiry — ${CONFIG.brand}*
+`*New enquiry - ${CONFIG.brand}*
 Ref: ${ref()}
 
-👤 ${name}
-📞 ${phone}${city ? `\n📍 ${city}` : ""}
+*Customer*
+${first} ${last}
+${phone}${email ? "\n" + email : ""}
+
+*Delivery address*
+${addr}${apt ? "\n" + apt : ""}
+${city}, ${state} ${pin}
+India
 
 *Items*
 ${lines.join("\n")}
 
-Estimated total: ${sum ? inr(sum) : "on request"}${note ? `\n\n📝 ${note}` : ""}
+Estimated total: ${sum ? inr(sum) : "on request"}${note ? "\n\n*Note*\n" + note : ""}${F("cNews").checked ? "\n\nHappy to receive festival updates." : ""}
 
 Sent from ${CONFIG.site}`;
 
   window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`, "_blank");
 
   closeCart();
-  toast("Enquiry opened in WhatsApp — press send there.", "Clear my list", () => {
-    cart = {}; save(); renderCart(); renderGrid();
-    ["cName","cPhone","cCity","cNote"].forEach(i => document.getElementById(i).value = "");
+  toast("Enquiry opened in WhatsApp - press send there.", "Clear my list", () => {
+    cart = {}; save(); renderCart(); renderGrid(); renderPop();
+    F("cNote").value = "";
   });
 };
 
@@ -764,6 +1131,13 @@ document.getElementById("customBtn").onclick = () => {
     requestAnimationFrame(loop);
   })();
 })();
+
+// gallery of lifestyle photos
+const GAL = ["1000733015","1000733011","1000733012","1000732995","1000732935","1000732972","1000732969","1000732951"];
+document.getElementById("gal").innerHTML =
+  GAL.map(k => `<img src="${IMG[k]}" alt="ArtKrruti decor in use" loading="lazy" data-g="${k}">`).join("");
+document.getElementById("waFoot").href =
+  `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent("Hi ArtKrruti!")}`;
 
 renderCart();
 </script>
