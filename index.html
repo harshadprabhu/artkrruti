@@ -31,38 +31,48 @@ a{color:inherit}
 
 /* ================= header ================= */
 header{position:sticky;top:0;z-index:60;background:rgba(252,233,239,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.bar{display:flex;align-items:center;gap:20px;height:var(--hdr);transition:height .22s ease}
-header.small .bar{height:60px}
+.bar{display:flex;align-items:center;gap:12px;padding:10px 0;transition:padding .22s ease}
+.bar-side{flex:1 1 0;display:flex;align-items:center;min-width:52px}
+.bar-side.right{justify-content:flex-end}
 .mark{flex:0 0 auto;display:block}
-.mark img{height:56px;width:auto;transition:height .22s ease;display:block}
-header.small .mark img{height:38px}
-nav{display:flex;gap:22px;margin-left:auto;font-size:13.5px;letter-spacing:.06em;text-transform:uppercase}
-nav a{text-decoration:none;padding:6px 0;border-bottom:2px solid transparent}
-nav a:hover{border-color:var(--rust)}
-.cart-btn{display:flex;align-items:center;gap:8px;background:var(--ink);color:var(--paper-2);padding:9px 16px;border-radius:999px;font-size:14px;font-weight:700;transition:transform .18s,background .18s}
-.cart-btn:hover{transform:translateY(-2px);background:var(--teal)}
-.dot{min-width:20px;height:20px;border-radius:999px;background:var(--saffron);color:var(--ink);display:grid;place-items:center;font-size:12px;font-weight:800;padding:0 5px}
+.mark img{height:64px;width:auto;display:block;transition:height .22s ease}
+header.small .bar{padding:6px 0}
+header.small .mark img{height:40px}
+
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:20px;padding:0 0 11px;
+  font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+nav a{text-decoration:none;color:#5A4650;padding:3px 0;border-bottom:2px solid transparent}
+nav a:hover{color:var(--ink);border-color:var(--rose)}
+
+.cart-btn{position:relative;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+  color:var(--ink);background:transparent;transition:background .16s}
+.cart-btn:hover{background:rgba(209,77,122,.12)}
+.cart-btn svg{width:23px;height:23px}
+.dot{position:absolute;top:2px;right:1px;min-width:19px;height:19px;border-radius:999px;
+  background:var(--rose);color:#fff;display:grid;place-items:center;font-size:11px;font-weight:800;padding:0 5px;
+  border:2px solid var(--paper)}
+header.small .dot{border-color:var(--paper)}
+
 @media(max-width:880px){
-  nav{display:none}.bar{gap:12px}
-  :root{--hdr:70px}
-  .mark img{height:44px}
+  nav{gap:14px;font-size:11px;padding-bottom:9px}
+  .mark img{height:48px}
   header.small .mark img{height:34px}
+  .cart-btn{width:40px;height:40px}
 }
+@media(max-width:520px){ nav{gap:11px;font-size:10px;letter-spacing:.05em;padding-bottom:8px} }
 
 /* ================= hero ================= */
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
 #trail{position:absolute;inset:0;pointer-events:none;z-index:1}
 .hero-in{position:relative;z-index:2;padding:56px 0 60px;max-width:900px;margin:0 auto;text-align:center}
-.hero-logo{width:clamp(260px,46vw,520px);height:auto;margin:0 auto 26px;display:block;
-  filter:drop-shadow(0 10px 26px rgba(168,50,92,.18))}
 .hero-in .eyebrow{justify-content:center}
 .hero-in .eyebrow::before{content:"";height:1px;width:64px;background:var(--rust);opacity:.55}
 .hero-in .lede{margin-left:auto;margin-right:auto}
 .hero-cta{justify-content:center}
-@media(max-width:860px){.hero-logo{margin-bottom:20px}}
+
 .eyebrow{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);font-weight:700;margin:0 0 16px;display:flex;align-items:center;gap:12px}
 .eyebrow::after{content:"";height:1px;width:64px;background:var(--rust);opacity:.55}
-h1{font-family:var(--display);font-weight:400;margin:0 0 14px;font-size:clamp(1.7rem,3.6vw,2.7rem);line-height:1.12;color:var(--ink)}
+h1{font-family:var(--display);font-weight:400;margin:0 0 16px;font-size:clamp(2.1rem,4.8vw,3.4rem);line-height:1.1;color:var(--ink)}
 h1 em{font-style:italic;color:var(--rust)}
 .lede{font-size:clamp(1rem,1.8vw,1.14rem);max-width:56ch;margin:0 0 26px;color:#4A4A4A}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
@@ -87,22 +97,30 @@ h1 em{font-style:italic;color:var(--rust)}
 .shop-head h2{font-family:var(--display);font-weight:400;font-size:clamp(1.7rem,3.2vw,2.4rem);color:var(--ink);margin:0;line-height:1.1}
 .count{font-size:14px;color:#7A7A7A;margin-left:auto}
 
-/* sticky filter rail */
-.filters{position:sticky;top:var(--hdr);z-index:50;background:var(--paper);padding:12px 0 14px;margin-bottom:22px;border-bottom:1px solid var(--line)}
-.rail{display:flex;gap:9px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px}
-.rail::-webkit-scrollbar{display:none}
-.chip{
-  flex:0 0 auto;display:flex;align-items:center;gap:8px;
-  padding:9px 16px;border-radius:999px;border:1.5px solid var(--line);
-  background:var(--paper-2);font-size:14px;font-weight:700;color:#4A4A4A;
-  transition:background .15s,color .15s,border-color .15s;white-space:nowrap;
-}
-.chip .swatch{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
-.chip .num{font-size:11.5px;font-weight:700;opacity:.6}
-.chip:hover{border-color:#B9B4A8}
-.chip[aria-pressed="true"]{color:#fff;border-color:transparent}
-.chip[aria-pressed="true"] .swatch{background:rgba(255,255,255,.85)!important}
-.chip[aria-pressed="true"] .num{opacity:.8}
+/* compact filter */
+.shop-head{align-items:center}
+.count{margin-left:0}
+.fwrap{position:relative;margin-left:auto}
+.fbtn{display:flex;align-items:center;gap:7px;padding:8px 14px;border-radius:999px;
+  border:1.5px solid var(--line);background:#fff;font-size:13px;font-weight:700;color:var(--ink)}
+.fbtn svg{width:15px;height:15px}
+.fbtn:hover{border-color:var(--rose)}
+.fbtn.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.fpanel{position:absolute;right:0;top:calc(100% + 8px);z-index:55;width:236px;
+  background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;
+  box-shadow:0 14px 34px rgba(120,40,70,.16)}
+.fp-h{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#9A8490;margin:4px 0 6px}
+.fp-h:not(:first-child){margin-top:12px;padding-top:11px;border-top:1px solid var(--line)}
+.fopt{display:flex;align-items:center;gap:8px;width:100%;padding:6px 8px;border-radius:7px;
+  font-size:13.5px;font-weight:600;color:#4A3A42;text-align:left}
+.fopt:hover{background:var(--paper)}
+.fopt.on{background:var(--ink);color:#fff}
+.fopt i{width:8px;height:8px;border-radius:50%;flex:0 0 auto;font-style:normal}
+.fopt .n{margin-left:auto;font-size:11px;opacity:.6;font-weight:700}
+.fp-clear{width:100%;margin-top:11px;padding:8px;border-radius:8px;background:var(--paper);
+  font-size:12.5px;font-weight:700;color:var(--rose-dp)}
+.fp-clear:hover{background:rgba(209,77,122,.14)}
+@media(max-width:520px){.fpanel{width:min(280px,86vw)}}
 
 /* ================= product grid (compact, modern) ================= */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(172px,1fr));gap:14px}
@@ -138,22 +156,6 @@ h1 em{font-style:italic;color:var(--rust)}
 .ann{background:var(--ink);color:#fff;font-size:12.5px;letter-spacing:.05em;text-align:center;padding:8px 14px}
 .ann b{color:var(--saffron)}
 
-/* ---- horizontal scroll rows ---- */
-.row-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
-.row-head h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--ink);margin:0;line-height:1.1}
-.row-nav{margin-left:auto;display:flex;align-items:center;gap:8px}
-.row-nav span{font-size:12.5px;color:#8A7480;min-width:56px;text-align:right}
-.row-nav button{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);background:#fff;color:var(--ink);font-size:17px;line-height:1;display:grid;place-items:center}
-.row-nav button:hover:not(:disabled){background:var(--ink);color:#fff;border-color:var(--ink)}
-.row-nav button:disabled{opacity:.32;cursor:default}
-.scroller{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px;scroll-behavior:smooth}
-.scroller::-webkit-scrollbar{display:none}
-.scroller > *{scroll-snap-align:start;flex:0 0 auto}
-.scroller .card{width:190px}
-.scroller .tile{width:190px}
-.scroller .ft{width:210px}
-@media(min-width:700px){.scroller .card,.scroller .tile{width:220px}}
-
 /* ---- collection tiles ---- */
 .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
 .tile{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/5;border:1px solid var(--line);cursor:pointer}
@@ -168,11 +170,6 @@ h1 em{font-style:italic;color:var(--rust)}
 .ft:hover{transform:translateY(-3px)}
 .ft b{font-family:var(--display);font-weight:400;font-size:17px;display:block;line-height:1.2}
 .ft small{font-size:11.5px;opacity:.85}
-
-/* ---- active filter banner ---- */
-.fbanner{display:none;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-bottom:16px;font-size:14px}
-.fbanner.on{display:flex}
-.fbanner button{margin-left:auto;color:var(--rose-dp);font-weight:700;text-decoration:underline;font-size:13px}
 
 /* ---- trust strip ---- */
 .trust{background:#fff;border-block:1px solid var(--line);padding:22px 0}
@@ -342,24 +339,32 @@ footer{background:var(--char);color:rgba(255,255,255,.68);padding:34px 0;font-si
 <div class="ann">Handmade to order in Mumbai · <b>Ships across India</b> · Bulk & mandal orders welcome</div>
 <header>
   <div class="wrap bar">
+    <div class="bar-side"></div>
     <a class="mark" href="#top" aria-label="ArtKrruti home"><img id="logoTop" src="" alt="ArtKrruti"></a>
-    <nav>
-      <a href="#collections">Shop</a>
-      <a href="#festivals">Festivals</a>
-      <a href="#about">Our work</a>
-      <a href="#care">Care</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <button class="cart-btn" id="openCart">My list <span class="dot" id="count">0</span></button>
+    <div class="bar-side right">
+      <button class="cart-btn" id="openCart" aria-label="Open your list">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <span class="dot" id="count">0</span>
+      </button>
+    </div>
   </div>
+  <nav id="mainNav">
+    <a href="#collections">Shop</a>
+    <a href="#festivals">Festivals</a>
+    <a href="#shop">Catalogue</a>
+    <a href="#about">Our work</a>
+    <a href="#care">Care</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
 <main id="top">
   <div class="hero">
     <canvas id="trail" aria-hidden="true"></canvas>
     <div class="wrap hero-in">
-      <img class="hero-logo" id="logoHero" src="" alt="ArtKrruti">
       <p class="eyebrow">Handmade in Mumbai</p>
       <h1>Decor for the days that <em>matter</em>.</h1>
       <p class="lede">Thaal covers, torans, Gudi Padwa sets, shagun cones, lotus asans and reusable rangoli mats — stitched by hand in paithani and khan fabric.</p>
@@ -373,38 +378,23 @@ footer{background:var(--char);color:rgba(255,255,255,.68);padding:34px 0;font-si
   <div class="how">
     <div class="wrap how-in">
       <div class="how-step"><span class="how-num">१</span> Add what you need to your list</div>
-      <div class="how-step"><span class="how-num">२</span> Send it on WhatsApp in one tap</div>
+      <div class="how-step"><span class="how-num">२</span> Confirm the order on WhatsApp</div>
       <div class="how-step"><span class="how-num">३</span> We confirm colours, price and delivery</div>
     </div>
   </div>
 
   <section id="collections" style="padding:52px 0 6px">
     <div class="wrap">
-      <div class="row-head"><h2>Shop by collection</h2>
-        <div class="row-nav"><span id="nTiles"></span>
-          <button data-scroll="tiles" data-dir="-1" aria-label="Scroll left">‹</button>
-          <button data-scroll="tiles" data-dir="1" aria-label="Scroll right">›</button></div></div>
-      <div class="scroller" id="tiles"></div>
+      <div class="shop-head"><h2>Shop by collection</h2></div>
+      <div class="tiles" id="tiles"></div>
     </div>
   </section>
 
   <section id="festivals" style="padding:40px 0 6px">
     <div class="wrap">
-      <div class="row-head"><h2>Shop by festival</h2>
-        <div class="row-nav"><span id="nFest"></span>
-          <button data-scroll="festTiles" data-dir="-1" aria-label="Scroll left">‹</button>
-          <button data-scroll="festTiles" data-dir="1" aria-label="Scroll right">›</button></div></div>
-      <div class="scroller" id="festTiles"></div>
-    </div>
-  </section>
-
-  <section id="popular" style="padding:40px 0 6px">
-    <div class="wrap">
-      <div class="row-head"><h2>Festive favourites</h2>
-        <div class="row-nav"><span id="nPop"></span>
-          <button data-scroll="popRow" data-dir="-1" aria-label="Scroll left">‹</button>
-          <button data-scroll="popRow" data-dir="1" aria-label="Scroll right">›</button></div></div>
-      <div class="scroller" id="popRow"></div>
+      <div class="shop-head"><h2>Shop by festival</h2>
+        <span class="count">Everything you need for the occasion</span></div>
+      <div class="fest-tiles" id="festTiles"></div>
     </div>
   </section>
 
@@ -413,13 +403,23 @@ footer{background:var(--char);color:rgba(255,255,255,.68);padding:34px 0;font-si
       <div class="shop-head">
         <h2>The collection</h2>
         <span class="count" id="resCount"></span>
+        <div class="fwrap">
+          <button class="fbtn" id="filterBtn" aria-expanded="false" aria-controls="fpanel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M3 6h18M7 12h10M11 18h2"/></svg>
+            <span id="fLabel">Filter</span>
+          </button>
+          <div class="fpanel" id="fpanel" hidden>
+            <div class="fp-h">Category</div>
+            <div id="fCats"></div>
+            <div class="fp-h">Festival</div>
+            <div id="fFests"></div>
+            <button class="fp-clear" id="fReset">Clear all filters</button>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="filters">
-      <div class="wrap"><div class="rail" id="chips" role="group" aria-label="Filter by category"></div></div>
-    </div>
     <div class="wrap">
-      <div class="fbanner" id="fbanner"><span id="fbText"></span><button id="fbClear">Clear filter</button></div>
       <div class="grid" id="grid"></div>
     </div>
   </section>
@@ -586,8 +586,8 @@ footer{background:var(--char);color:rgba(255,255,255,.68);padding:34px 0;font-si
   <div class="d-foot" id="dFoot" hidden>
     <div class="tot"><span>Estimated total</span><b id="total">₹0</b></div>
     <p class="tot-note" id="totNote"></p>
-    <button class="wa" id="send">Send list on WhatsApp</button>
-    <p class="fine">Opens WhatsApp with your details ready — you just press send.</p>
+    <button class="wa" id="send">Confirm order</button>
+    <p class="fine">Opens WhatsApp with your details filled in. We confirm price and delivery there — nothing is charged here.</p>
   </div>
 </aside>
 
@@ -752,8 +752,6 @@ const FESTIVALS = [
 let activeFest = null;
 const inFest = (p, f) => p.f.some(tag => f.match.some(m => tag.toLowerCase().includes(m.toLowerCase())));
 
-const BEST = ["AK-TH1","AK-TR2","AK-GD1","AK-RG2","AK-CN1","AK-AS1","AK-TH8","AK-TR1","AK-GD3","AK-RG1"];
-
 function cardHTML(p){
   const cat = catOf(p.c), qty = cart[p.id] || 0, n = shots(p).length;
   const off = p.mrp && p.price ? Math.round((1 - p.price / p.mrp) * 100) : 0;
@@ -773,29 +771,6 @@ function cardHTML(p){
         p.stock === "out" ? "Sold out" : qty ? `Added · ${qty}` : "Add to list"}</button>
     </div>
   </article>`;
-}
-
-// scroller arrows + counters
-function wireScroller(id, label){
-  const el = document.getElementById(id);
-  const btns = [...document.querySelectorAll(`[data-scroll="${id}"]`)];
-  const upd = () => {
-    const step = el.firstElementChild ? el.firstElementChild.offsetWidth + 14 : 200;
-    const page = Math.max(1, Math.round(el.clientWidth / step));
-    const cur  = Math.floor(el.scrollLeft / step / page) + 1;
-    const tot  = Math.max(1, Math.ceil(el.children.length / page));
-    if(label) document.getElementById(label).textContent = `${Math.min(cur,tot)} / ${tot}`;
-    btns[0].disabled = el.scrollLeft < 6;
-    btns[1].disabled = el.scrollLeft + el.clientWidth >= el.scrollWidth - 6;
-  };
-  btns.forEach(b => b.onclick = () => {
-    const step = el.firstElementChild ? el.firstElementChild.offsetWidth + 14 : 200;
-    el.scrollBy({ left: +b.dataset.dir * step * Math.max(1, Math.floor(el.clientWidth / step)), behavior:"smooth" });
-  });
-  el.addEventListener("scroll", upd, { passive:true });
-  window.addEventListener("resize", upd);
-  setTimeout(upd, 60);
-  return upd;
 }
 
 // collection tiles
@@ -825,47 +800,52 @@ ftw.addEventListener("click", e => {
   activeFest = FESTIVALS[+t.dataset.fest]; active = "all"; paintChips(); renderGrid();
   document.getElementById("shop").scrollIntoView({behavior:"smooth"});
 });
-document.getElementById("fbClear").onclick = () => { activeFest = null; renderGrid(); };
 
-// festive favourites row
-const popRow = document.getElementById("popRow");
-function renderPop(){
-  popRow.innerHTML = BEST.map(find).filter(Boolean).map(cardHTML).join("");
-}
-renderPop();
-popRow.addEventListener("click", e => {
-  const add = e.target.closest("[data-add]");
-  if(add){ e.stopPropagation(); const id = add.dataset.add;
-    cart[id] = (cart[id]||0) + 1; save(); renderPop(); renderGrid(); renderCart(); bump();
-    toast(`${find(id).n} added`, "View list", openCart); return; }
-  const c = e.target.closest("[data-open]");
-  if(c) openSheet(c.dataset.open);
-});
-
-const updTiles = wireScroller("tiles","nTiles");
-const updFest  = wireScroller("festTiles","nFest");
-const updPop   = wireScroller("popRow","nPop");
-
-/* ---------- category rail ---------- */
+/* ---------- compact filter dropdown ---------- */
 let active = "all";
-const chips = document.getElementById("chips");
-function paintChips(){
-  [...chips.children].forEach((el,i) => {
-    const c = CATS[i], on = c.k === active;
-    el.setAttribute("aria-pressed", on);
-    el.style.background = on ? c.col : "var(--paper-2)";
-    el.style.color = on ? "#fff" : "#4A4A4A";
-  });
+const fCats = document.getElementById("fCats"), fFests = document.getElementById("fFests");
+const fBtn = document.getElementById("filterBtn"), fPanel = document.getElementById("fpanel");
+
+function buildFilter(){
+  fCats.innerHTML = CATS.map(c => {
+    const n = c.k === "all" ? PRODUCTS.length : PRODUCTS.filter(p => p.c === c.k).length;
+    return `<button class="fopt ${c.k === active ? "on" : ""}" data-c="${c.k}">
+      <i style="background:${c.col}"></i>${esc(c.n)}<span class="n">${n}</span></button>`;
+  }).join("");
+  fFests.innerHTML = `<button class="fopt ${!activeFest ? "on" : ""}" data-f="-1">
+      <i style="background:#B9AEB4"></i>Any festival<span class="n">${PRODUCTS.length}</span></button>` +
+    FESTIVALS.map((f,i) => {
+      const n = PRODUCTS.filter(p => inFest(p,f)).length;
+      return n ? `<button class="fopt ${activeFest === f ? "on" : ""}" data-f="${i}">
+        <i style="background:${f.col}"></i>${esc(f.n)}<span class="n">${n}</span></button>` : "";
+    }).join("");
+
+  const bits = [];
+  if(active !== "all") bits.push(catOf(active).n);
+  if(activeFest) bits.push(activeFest.n);
+  document.getElementById("fLabel").textContent = bits.length ? bits.join(" · ") : "Filter";
+  fBtn.classList.toggle("active", bits.length > 0);
 }
-CATS.forEach(c => {
-  const n = c.k === "all" ? PRODUCTS.length : PRODUCTS.filter(p => p.c === c.k).length;
-  const b = document.createElement("button");
-  b.className = "chip";
-  b.innerHTML = `<span class="swatch" style="background:${c.col}"></span>${esc(c.n)}<span class="num">${n}</span>`;
-  b.onclick = () => { active = c.k; paintChips(); renderGrid(); };
-  chips.appendChild(b);
+const paintChips = buildFilter;   // kept: tiles call this after changing filters
+
+function togglePanel(open){
+  const show = open ?? fPanel.hidden;
+  fPanel.hidden = !show;
+  fBtn.setAttribute("aria-expanded", show);
+}
+fBtn.onclick = e => { e.stopPropagation(); togglePanel(); };
+document.addEventListener("click", e => {
+  if(!fPanel.hidden && !fPanel.contains(e.target) && e.target !== fBtn) togglePanel(false);
 });
-paintChips();
+fPanel.addEventListener("click", e => {
+  const c = e.target.closest("[data-c]"), f = e.target.closest("[data-f]");
+  if(c){ active = c.dataset.c; buildFilter(); renderGrid(); }
+  else if(f){ const i = +f.dataset.f; activeFest = i < 0 ? null : FESTIVALS[i]; buildFilter(); renderGrid(); }
+});
+document.getElementById("fReset").onclick = () => {
+  active = "all"; activeFest = null; buildFilter(); renderGrid(); togglePanel(false);
+};
+buildFilter();
 
 /* ---------- grid ---------- */
 const grid = document.getElementById("grid");
@@ -873,13 +853,8 @@ function renderGrid(){
   let list = active === "all" ? PRODUCTS : PRODUCTS.filter(p => p.c === active);
   if(activeFest) list = list.filter(p => inFest(p, activeFest));
 
-  const fb = document.getElementById("fbanner");
-  fb.classList.toggle("on", !!activeFest);
-  if(activeFest) document.getElementById("fbText").innerHTML =
-    `Showing pieces for <b style="color:${activeFest.col}">${esc(activeFest.n)}</b>`;
-
   document.getElementById("resCount").textContent =
-    `${list.length} ${list.length === 1 ? "product" : "products"}${active === "all" ? "" : " in " + catOf(active).n.toLowerCase()}`;
+    `${list.length} ${list.length === 1 ? "product" : "products"}`;
 
   if(!list.length){ grid.innerHTML = `<p class="empty-grid">Nothing in this category yet.</p>`; return; }
 
@@ -891,7 +866,7 @@ grid.addEventListener("click", e => {
     e.stopPropagation();
     const id = add.dataset.add;
     cart[id] = (cart[id] || 0) + 1;
-    save(); renderGrid(); renderPop(); renderCart(); bump();
+    save(); renderGrid(); renderCart(); bump();
     toast(`${find(id).n} added`, "View list", openCart);
     return;
   }
@@ -943,7 +918,7 @@ sheet.addEventListener("click", e => {
 document.getElementById("shClose").onclick = closeSheet;
 document.getElementById("shAdd").onclick = () => {
   cart[shP.id] = (cart[shP.id] || 0) + shQ;
-  save(); renderGrid(); renderPop(); renderCart(); bump();
+  save(); renderGrid(); renderCart(); bump();
   const nm = shP.n;
   closeSheet();
   toast(`${nm} × ${shQ} added`, "View list", openCart);
@@ -1015,7 +990,7 @@ document.getElementById("dBody").addEventListener("click", e => {
     cart[id] += +t.dataset.q;
     if(cart[id] < 1) delete cart[id];
   } else return;
-  save(); renderCart(); renderGrid(); renderPop();
+  save(); renderCart(); renderGrid();
 });
 
 /* ---------- WhatsApp handoff ---------- */
@@ -1087,8 +1062,8 @@ Sent from ${CONFIG.site}`;
   window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`, "_blank");
 
   closeCart();
-  toast("Enquiry opened in WhatsApp - press send there.", "Clear my list", () => {
-    cart = {}; save(); renderCart(); renderGrid(); renderPop();
+  toast("Order opened in WhatsApp — press send to confirm.", "Clear my list", () => {
+    cart = {}; save(); renderCart(); renderGrid();
     F("cNote").value = "";
   });
 };
